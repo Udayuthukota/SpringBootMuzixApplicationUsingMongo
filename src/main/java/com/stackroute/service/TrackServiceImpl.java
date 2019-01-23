@@ -5,7 +5,6 @@ import com.stackroute.exceptions.TrackNotFoundException;
 import com.stackroute.repository.TrackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 //service implemntation class where the actual bussiness logic goes
@@ -65,10 +64,10 @@ public class TrackServiceImpl implements TrackService {
             throw new TrackNotFoundException("Track Not found");
         }
     }
-    //finding a track by name
-    @Override
-    public List<Track> findByName(String trackName) throws TrackNotFoundException {
-            return trackRepository.findByName(trackName);
-
-    }
+   // finding a track by name
+//    @Override
+//    public List<Track> findTrackByName(String trackName)  {
+//        return trackRepository.findTrackByName(trackName);
+//
+//    }
 }

@@ -3,6 +3,7 @@ import com.stackroute.domain.Track;
 import com.stackroute.exceptions.TrackAlreadyExistsException;
 import com.stackroute.exceptions.TrackNotFoundException;
 import com.stackroute.service.TrackService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 //controller to recieve and sent the responses
+@Api(value="Track")
 @RestController
 @RequestMapping(value="api/v1")
 public class TrackController {
@@ -76,13 +78,13 @@ private TrackService trackService;
             responseEntity = new ResponseEntity<Optional<Track>>(trackService.getTrackById(trackId), HttpStatus.OK);
         return responseEntity;
     }
-    @ApiOperation(value = "Get the details of a track by trackName", response = Iterable.class)
-    @GetMapping("track/{trackName}")
-    public ResponseEntity<?> findByNamee(@PathVariable("trackName") String trackName ) throws TrackNotFoundException {
-        //To find a track using name
-        ResponseEntity responseEntity;
-            responseEntity = new ResponseEntity<List<Track>>(trackService.findByName(trackName), HttpStatus.OK);
-        return responseEntity;
-    }
+//    @ApiOperation(value = "Get the details of a track by trackName", response = Iterable.class)
+//    @GetMapping("track/{trackName}")
+//    public ResponseEntity<?> findByName(@PathVariable("trackName") String trackName ){
+//        //To find a track using name
+//        ResponseEntity responseEntity;
+//            responseEntity = new ResponseEntity<List<Track>>(trackService.findTrackByName(trackName), HttpStatus.FOUND);
+//        return responseEntity;
+//    }
 
 }
